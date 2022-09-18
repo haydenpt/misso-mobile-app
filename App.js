@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { registerRootComponent } from "expo";
+import { NavigationContainer } from "@react-navigation/native";
+import React from "react";
+import { AuthProvider } from "./src/components/auth/AuthContext";
 
-export default function App() {
+import Navigator from "./src/routes/Navigator";
+import { ProfileProvider } from "./src/components/auth/ProfileContext";
+import { MessageProvider } from "./src/components/auth/MessageContext";
+import { navigationRef } from "./RootNavigation";
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer ref={navigationRef}>
+      <AuthProvider>
+        <ProfileProvider>
+          <MessageProvider>
+            <Navigator />
+          </MessageProvider>
+        </ProfileProvider>
+      </AuthProvider>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+registerRootComponent(App);
+export default App;
