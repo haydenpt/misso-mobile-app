@@ -4,11 +4,11 @@ import { appStyles } from "../../styles/styles";
 import { Ionicons } from "@expo/vector-icons";
 
 const PopUpMessage = ({
-  statusMessage,
-  messageType,
-  showMessage,
-  setMessage,
-  displayMessage,
+  statusMessage, // content
+  messageType, // severity
+  showMessage, // display or not
+  setMessage, // set content and severity
+  displayMessage, // set display or not
 }) => {
   const opacity = useRef(new Animated.Value(0)).current; // Initial value for opacity: 0
   function fadeIn() {
@@ -35,7 +35,7 @@ const PopUpMessage = ({
     fadeIn();
     setTimeout(() => {
       if (displayMessage) fadeOut();
-    }, 8000);
+    }, 5000);
   }, []);
 
   return (

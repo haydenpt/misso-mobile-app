@@ -26,9 +26,11 @@ import { useProfile } from "./ProfileContext";
 import { validateEmail, validatePassword } from "../utils/validation";
 
 const LoginForm = () => {
-
   function navigateSignup() {
     navigation.navigate("Signup");
+  }
+  function navigateResetPassword() {
+    navigation.navigate("ResetPassword");
   }
   function navigateRegister() {
     const url = "https://misso.org/signup";
@@ -44,12 +46,12 @@ const LoginForm = () => {
   const { showMessage, setMessage } = useMessage();
   const { email, setEmail, password, setPassword } = useProfile();
 
-  function validateAndLogin() {
+  async function validateAndLogin() {
     const validEmail = validateEmail(email);
     const validPassword = validatePassword(password);
 
     if (validEmail && validPassword) {
-      handleLogIn();
+      await handleLogIn();
     } else {
       if (!validEmail && !validPassword) {
         setMessage(
@@ -120,14 +122,14 @@ const LoginForm = () => {
           />
         </View>
 
-        <View style={[styles.loginTools]}>
-          <View style={[styles.rememberMe]}>
+        <View style={styles.loginTools}>
+          <View style={styles.rememberMe}>
             <TouchableOpacity onPress={toggleRememberMe}>
               <CheckBox value={rememberMe} onValueChange={toggleRememberMe} />
             </TouchableOpacity>
-            <Text style={[styles.textDark]}> Remember me</Text>
+            <Text style={styles.textDark}> Remember me</Text>
           </View>
-          <TouchableOpacity activeOpacity={0.5}>
+          <TouchableOpacity activeOpacity={0.5} onPress={navigateResetPassword}>
             <Text style={[styles.textDark, styles.bodyText]}>
               Forgot Password
             </Text>
@@ -152,7 +154,7 @@ const LoginForm = () => {
 
         <TouchableOpacity
           activeOpacity={0.5}
-          style={[styles.buttonFullWidth]}
+          style={styles.buttonFullWidth}
           onPress={navigateRegister}
         >
           <Text style={styles.textDark}>Not yet a member? Register here!</Text>

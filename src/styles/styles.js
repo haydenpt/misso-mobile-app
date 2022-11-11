@@ -11,6 +11,15 @@ export const appStyles = StyleSheet.create({
     width: "100%",
   },
 
+  screenContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    // padding: 20,
+    // backgroundColor: "#0A274C",
+    width: "100%",
+  },
+
   // SHADOW STYLES
   boxShadow1: {
     shadowColor: "#000",
@@ -58,9 +67,8 @@ export const appStyles = StyleSheet.create({
   textGrey: {
     color: "#dadada",
   },
-  text: {
-    header: {},
-    body: {},
+  textBold: {
+    fontWeight: "bold",
   },
 
   // FORM STYLES
@@ -113,6 +121,63 @@ export const appStyles = StyleSheet.create({
     position: "absolute",
     right: 5,
     top: 5,
+  },
+});
+
+export const stylesDrawer = StyleSheet.create({
+  drawerContainer: {
+    flex: 1,
+    backgroundColor: "#2F3C4E",
+  },
+  drawerHeader: {
+    backgroundColor: "#2F3C4E",
+  },
+  drawerItemList: {
+    backgroundColor: "#2F3C4E",
+    padding: 10,
+  },
+  drawerLogo: {
+    width: "65%",
+    height: 100,
+    resizeMode: "contain",
+    alignSelf: "center",
+  },
+  menuIcon: {
+    margin: 10,
+  },
+  helloContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#293343",
+    padding: 12,
+    marginTop: 20,
+    marginBottom: 20,
+    marginLeft: 20,
+    marginRight: 20,
+    borderRadius: 12,
+  },
+  geetingMessage: {
+    color: "#ffffff",
+    fontWeight: "bold",
+  },
+  drawerToolContainer: {
+    marginBottom: 20,
+  },
+  drawerToolButton: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    // backgroundColor: "#293343",
+    padding: 5,
+    marginBottom: 7,
+    marginLeft: 30,
+    marginRight: 30,
+    borderRadius: 12,
+  },
+  drawerToolText: {
+    color: "#94A0B8",
+    margin: 5,
   },
 });
 
@@ -176,6 +241,15 @@ export const stylesAuth = StyleSheet.create({
   },
   rememberMe: {
     flexDirection: "row",
+    alignItems: "center",
+  },
+});
+
+export const stylesEvent = StyleSheet.create({
+  eventCard: {
+    backgroundColor: "#fff",
+    borderRadius: 30,
+    margin: 10,
     alignItems: "center",
   },
 });

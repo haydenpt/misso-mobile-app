@@ -196,7 +196,7 @@ const SignupForm = () => {
         </TouchableOpacity>
         <TouchableOpacity
           activeOpacity={0.5}
-          style={[styles.buttonFullWidth]}
+          style={styles.buttonFullWidth}
           onPress={navigateRegister}
         >
           <Text style={styles.textDark}>Not yet a member? Register here!</Text>

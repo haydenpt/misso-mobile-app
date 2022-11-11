@@ -50,7 +50,7 @@ export function AuthProvider({ children }) {
       }
       if (err.includes("auth/too-many-requests")) {
         err =
-          "This account has been restricted due to too many failed login attempts. Please try again later or reset your password.";
+          "This account has been restricted due to too many failed login attempts. Please try again later or reset your password for immediate access.";
       }
       return { error: err };
     }
@@ -61,15 +61,21 @@ export function AuthProvider({ children }) {
       return await signOut(auth);
     } catch (err) {
       // err catched here is an array. Convert to string for easy error handling
-      return { error: err.toString() };
+      return { error: "Logout error"};
     }
   }
 
   async function resetPassword(email) {
     try {
-      return sendPasswordResetEmail(auth, email);
+      await sendPasswordResetEmail(auth, email);
+      return {};
     } catch (err) {
-      console.log(err);
+      err = err.toString();
+      if (err.includes("auth/user-not-found")) {
+        err =
+          "Failed to reset your password.\nAn account with this email does not exist.";
+      }
+      return { error: err };
     }
   }
 

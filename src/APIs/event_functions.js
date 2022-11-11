@@ -1,3 +1,4 @@
+import { process } from "../../environment.js";
 const domain = process.env.REACT_APP_DOMAIN_EVENTS;
 
 export const getAllEventsOrderByTime = async () => {
